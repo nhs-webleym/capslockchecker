@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title></title>
+	<script src="jquery/jquery.js"></script>
+</head>
+<body>
+<form>
+<input type="password" name="pword">
+</form>
+
+
+<form>
+<input type="text" name="name"><br />
+<input type="password" name="password"><br />
+<input type="submit"><br />
+
+<script>
+checkCapsLock();
+
+
+function checkCapsLock(){
+  var logDiv = '<div class="log"></div>';
+
+  $('input[type=password]').each(function(){
+    $(this).after(logDiv);
+  })
+
+  $('input[type=password]').keypress(function(e) {
+      var s = String.fromCharCode( e.which );
+      if ( s.toUpperCase() === s && s.toLowerCase() !== s && !e.shiftKey ) {
+         $(this).next().html("caps lock is on!")
+      }else{
+        $('.log').empty();
+      }
+  });
+}
+
+</script>
+</body>
+</html>
